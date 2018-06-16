@@ -1,9 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import YTSearch from 'youtube-api-search';
 
 import SearchBar from './components/search_bar';
 
 const API_KEY = 'AIzaSyBI1QLjvSF6BFN24K5x37w5H2POXj5HsP8';
+
+YTSearch({key: API_KEY, term: 'KJV Bible'}, function(data) {
+  console.log(data);
+});
 
 // Create a new component, This component should produce some HTML
 const App = () => {
