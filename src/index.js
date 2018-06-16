@@ -4,12 +4,20 @@ import YTSearch from 'youtube-api-search';
 import SearchBar from './components/search_bar';
 const API_KEY = 'AIzaSyBI1QLjvSF6BFN24K5x37w5H2POXj5HsP8';
 
-YTSearch({key: API_KEY, term: 'KJV Bible'}, function(data) {
-  console.log(data);
-});
 
 // Create a new component, This component should produce some HTML
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { videos: [] };
+
+    YTSearch({key: API_KEY, term: 'KJV Bible'}, (videos) =>  {
+      this.setState({ videos });
+      // this.setState({ videos: videos });
+    });
+  }
+
   render() {
     return (
       <div>
